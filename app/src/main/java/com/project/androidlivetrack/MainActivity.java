@@ -14,13 +14,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btn = findViewById(R.id.verify_btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Welcome.class);
-                startActivity(intent);
-            }
-        });
+
+    }
+
+    public void signUp(View view) {
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("action", "signup");
+        startActivity(intent);
+
+        /*Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("action", "login");
+        startActivity(intent);*/
+    }
+
+    public void verify(View view) {
+
+        if(false){
+            Intent intent = new Intent(MainActivity.this, Welcome.class);
+            intent.putExtra("jwt","");
+            startActivity(intent);
+        }
     }
 }
+
