@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AndroidLiveTrack</string>
+    <string name="welcome">Welcome To Live Track</string>
+    <string name="accountKey">Please enter your account key below to get started</string>
+    <string name="verify">Verify</string>
+    <string name="name">Name:</string>
+    <string name="rita">Rita Okonkwo</string>
+    <string name="email">Email</string>
+    <string name="email_text">shhhhg@yahoo.com</string>
+    <string name="account_key">Account key</string>
+    <string name="account_text">345XXX</string>
+    <string name="info">Account Information</string>
+    <string name="on">on</string>
+    <string name="OFF">OFF</string>
+</resources>
