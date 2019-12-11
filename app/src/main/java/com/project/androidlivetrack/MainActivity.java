@@ -16,4 +16,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void signUp(View view) {
+        Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("action", "signup");
+        startActivity(intent);
+
+        /*Intent intent = new Intent(this, WebViewActivity.class);
+        intent.putExtra("action", "login");
+        startActivity(intent);*/
+    }
+
+    public void verify(View view) {
+
+        if(false){
+            Intent intent = new Intent(MainActivity.this, Welcome.class);
+            intent.putExtra("jwt","");
+            startActivity(intent);
+        }
+    }
 }
+
