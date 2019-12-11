@@ -12,4 +12,5 @@
     <string name="info">Account Information</string>
     <string name="on">on</string>
     <string name="OFF">OFF</string>
+    <string name="action">Action</string>
 </resources>
