@@ -10,12 +10,14 @@ import android.view.MenuItem;
 
 import androidx.appcompat.widget.Toolbar;
 
-public class Welcome extends AppCompatActivity {
-
+public class LoggedInActivity extends AppCompatActivity {
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_loggedin);
+        toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(toolbar);
 
         Toolbar toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
@@ -30,7 +32,7 @@ public class Welcome extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.action_menu) {
-            Intent intent = new Intent(Welcome.this, WebViewActivity.class);
+            Intent intent = new Intent(LoggedInActivity.this, WebViewActivity.class);
             startActivity(intent);
         }
         return true;

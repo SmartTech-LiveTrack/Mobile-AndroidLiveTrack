@@ -27,7 +27,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".EmergencyActivity" />
-        <activity android:name=".Welcome" />
+        <activity android:name=".WebViewActivity" />
+        <activity android:name=".LoggedInActivity" />
         <activity android:name=".MainActivity"></activity>
 
         <service
