@@ -27,12 +27,11 @@
         android:id="@+id/splash_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/splash_bg"
-        app:layout_constraintEnd_toEndOf="@+id/splash_bg"
-        app:layout_constraintStart_toStartOf="@+id/splash_bg"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/splash_bg"
-        app:srcCompat="@drawable/image_person" />
+        app:srcCompat="@drawable/lt" />
 
     <TextView
         android:id="@+id/splash_name"
