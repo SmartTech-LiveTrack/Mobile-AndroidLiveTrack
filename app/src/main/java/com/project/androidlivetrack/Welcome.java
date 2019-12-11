@@ -23,14 +23,14 @@ public class Welcome extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.action_menu) {
-            Intent intent = new Intent(Welcome.this, ActionActivity.class);
+            Intent intent = new Intent(Welcome.this, WebViewActivity.class);
             startActivity(intent);
         }
         return true;
