@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_splash"
     tools:context=".LoggedInActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:title="LiveTrack"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#6C63FF"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="LiveTrack" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circle_image"
