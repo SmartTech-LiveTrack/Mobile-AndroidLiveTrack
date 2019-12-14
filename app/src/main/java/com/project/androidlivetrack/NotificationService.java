@@ -91,6 +91,7 @@ public class NotificationService extends Service implements SensorEventListener 
                 v.vibrate(500);
             }
             Intent intent = new Intent(this,EmergencyActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
     }

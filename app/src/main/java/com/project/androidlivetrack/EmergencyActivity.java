@@ -3,6 +3,7 @@ package com.project.androidlivetrack;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.media.MediaPlayer;
@@ -11,17 +12,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.project.androidlivetrack.retrofit.AppServices;
+import com.project.androidlivetrack.retrofit.ServiceBuilder;
+import com.project.androidlivetrack.retrofit.models.UserData;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.project.androidlivetrack.SharedPreferenceUtil.initPref;
 
 public class EmergencyActivity extends AppCompatActivity {
     CountDownTimer cTimer = null;
     TextView timerText;
     MediaPlayer mp;
-
+    SharedPreferences mSettings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emergency);
-
+        mSettings = initPref(getApplicationContext());
         AudioManager audioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
         //raise volume 5 times
         audioManager.adjustVolume(AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
@@ -51,17 +63,14 @@ public class EmergencyActivity extends AppCompatActivity {
 
     private void startTimer() {
         timerText = findViewById(R.id.timerText);
-        cTimer = new CountDownTimer(10000, 1000) {
+        cTimer = new CountDownTimer(15000, 1000) {
             public void onTick(long millisUntilFinished) {
                 long timeRem = millisUntilFinished/1000;
                 String timeOutput = "0" + timeRem;
                 timerText.setText(timeOutput);
             }
             public void onFinish() {
-                cancelTimer();
-                disableButtons();
-                //report emergency
-                finishActivity(1);
+                yes(timerText);
             }
         };
         cTimer.start();
@@ -81,6 +90,22 @@ public class EmergencyActivity extends AppCompatActivity {
             mp.release();
             mp=null;
         }
+        AppServices ms = ServiceBuilder.buildService(AppServices.class);
+        UserData data = new UserData(this,null,null);
+        String token = mSettings.getString("token","");
+        Call<UserData> call = ms.alertContact(token, data);
+        call.enqueue(new Callback<UserData>() {
+            @Override
+            public void onResponse(Call<UserData> call, Response<UserData> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<UserData> call, Throwable t) {
+
+            }
+        });
+        finishAffinity();
     }
 
     public void no(View view) {
@@ -91,6 +116,7 @@ public class EmergencyActivity extends AppCompatActivity {
             mp.release();
             mp=null;
         }
+        Toast.makeText(this,"Alert sent",Toast.LENGTH_LONG).show();
         finishActivity(0);
 
     }

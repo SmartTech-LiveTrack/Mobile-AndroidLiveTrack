@@ -27,13 +27,14 @@ public class WebViewActivity extends AppCompatActivity {
 
         webView = findViewById(R.id.my_webview);
         //to make the site load within our app,  set webview client
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient(){
             @Override
             public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
                 handler.proceed();
             }
         });
-        webView.loadUrl("https://www.google.com");
+        webView.loadUrl("http://85.159.214.187/register");
 
 
     }
