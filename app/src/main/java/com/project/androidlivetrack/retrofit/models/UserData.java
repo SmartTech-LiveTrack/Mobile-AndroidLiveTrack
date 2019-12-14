@@ -5,18 +5,24 @@ import android.os.Handler;
 
 import com.project.androidlivetrack.SimpleLocation;
 import com.google.gson.annotations.SerializedName;
+import com.project.androidlivetrack.retrofit.AppServices;
+import com.project.androidlivetrack.retrofit.ServiceBuilder;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class UserData {
     @SerializedName("latitude")
     private String mLatitude;
     @SerializedName("longitude")
     private String mLongitude;
-    @SerializedName("username")
+    @SerializedName("email")
     private String mUsername;
     @SerializedName("password")
     private String mPassword;
@@ -24,6 +30,18 @@ public class UserData {
     private String mImageUrl;
     @SerializedName("timestamp")
     private String mDate;
+
+
+    public String getToken() {
+        return mToken;
+    }
+
+    public void setToken(String mToken) {
+        this.mToken = mToken;
+    }
+
+    @SerializedName("token")
+    private String mToken;
 
     private SimpleLocation mLocation;
     private Context mContext;
@@ -122,6 +140,19 @@ public class UserData {
                 setDate(getDateTime(mLocation.getTimestampInMilliseconds()));
             }
         }, 5000);
+        AppServices ms = ServiceBuilder.buildService(AppServices.class);
+        Call<UserData> call = ms.postLocation(this);
+        call.enqueue(new Callback<UserData>() {
+            @Override
+            public void onResponse(Call<UserData> call, Response<UserData> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<UserData> call, Throwable t) {
+
+            }
+        });
         //try post and if failed --->
         if(false){
             queueData();
